@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio | Creative CSE Student</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #090b12;
+  color: #f5f5f5;
+  line-height: 1.7;
+}
+
+:root {
+  --gold: #d6b36a;
+  --muted: #a7a7b2;
+  --panel: #131722;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: #0d1019;
+  border-bottom: 1px solid #282a33;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: 23px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+section {
+  padding: 75px 9%;
+}
+
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 45px;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.tag {
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+h1 {
+  font-size: clamp(35px, 6vw, 60px);
+  line-height: 1.2;
+  margin: 18px 0;
+}
+
+h1 span, h2 span {
+  color: var(--gold);
+}
+
+.hero p, .description {
+  color: var(--muted);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 25px;
+  background: var(--gold);
+  color: #101010;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.profile {
+  width: 270px;
+  height: 320px;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  border-radius: 16px;
+  background: var(--panel);
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.panel {
+  background: var(--panel);
+  padding: 25px;
+  border: 1px solid #292d3a;
+  border-radius: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: var(--panel);
+  padding: 23px;
+  border: 1px solid #292d3a;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+}
+
+.card h3 {
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.card p, .panel p {
+  color: var(--muted);
+}
+
+ul {
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+li {
+  margin: 8px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+  border-top: 1px solid #292d3a;
+}
+
+@media(max-width: 700px) {
+  header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: 55px;
+  }
+
+  .profile {
+    width: 210px;
+    height: 245px;
+  }
+
+  section {
+    padding: 55px 7%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">MY PORTFOLIO.</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#goals">Goals</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="tag">WELCOME TO MY DIGITAL SPACE</div>
+    <h1>Hello, I'm <span>YOUR NAME</span></h1>
+    <h3>Diploma CSE Student | Future Web Developer</h3>
+    <p>
+      I am a curious learner passionate about technology,
+      creative problem-solving and building useful digital experiences.
+      I believe every small step brings me closer to my goals.
+    </p>
+    <a href="#about" class="btn">Explore My Portfolio</a>
+  </div>
+
+  <img src="profile.jpg" alt="My Profile Picture" class="profile">
+</section>
+
+<section id="about">
+  <h2 class="section-title">About <span>Me</span></h2>
+  <div class="panel">
+    <p>
+      I am a Diploma student in Computer Science and Technology.
+      I enjoy exploring how technology works and turning ideas
+      into practical projects. I am currently developing my
+      knowledge in web development, databases and modern technology.
+      My goal is to become more skilled, confident and independent
+      through continuous learning and practical experience.
+    </p>
+  </div>
+</section>
+
+<section id="education">
+  <h2 class="section-title">My <span>Education</span></h2>
+  <div class="card">
+    <h3>Diploma in Computer Science & Technology</h3>
+    <p>Brahmanbaria Polytechnic Institute</p>
+    <p>Currently studying in 6th Semester</p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="section-title">My <span>Skills & Interests</span></h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Technical Interests</h3>
+      <ul>
+        <li>HTML & CSS</li>
+        <li>Web Design</li>
+        <li>Database Management</li>
+        <li>Programming Fundamentals</li>
+        <li>Computer Networking</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Creative Skills</h3>
+      <ul>
+        <li>Creative Thinking</li>
+        <li>Problem Solving</li>
+        <li>Organizing Information</li>
+        <li>Learning Through Projects</li>
+        <li>Attention to Detail</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Professional Development</h3>
+      <ul>
+        <li>Communication Skills</li>
+        <li>English Speaking Practice</li>
+        <li>Team Collaboration</li>
+        <li>Time Management</li>
+        <li>Continuous Learning</li>
+      </ul>
+    </div>
+  </div>
+  <p class="description" style="margin-top:18px">
+    These are my current skills and learning interests.
+    I am continuously working to improve them through practice.
+  </p>
+</section>
+
+<section id="goals">
+  <h2 class="section-title">My <span>Goals</span></h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Short-Term Goal</h3>
+      <p>Improve my technical knowledge and build practical projects.</p>
+    </div>
+    <div class="card">
+      <h3>Career Goal</h3>
+      <p>Develop a career in technology and gain real-world experience.</p>
+    </div>
+    <div class="card">
+      <h3>Personal Goal</h3>
+      <p>Become confident, independent and a lifelong learner.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">My <span>Projects</span></h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Personal Portfolio Website</h3>
+      <p>A responsive website created to introduce myself,
+      showcase my learning journey and present my projects.</p>
+      <p><br>Technology: HTML, CSS</p>
+    </div>
+
+    <div class="card">
+      <h3>Database Management Project</h3>
+      <p>A learning project focused on organizing information
+      and understanding database operations.</p>
+      <p><br>Technology: MySQL, Database Concepts</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Contact <span>Me</span></h2>
+  <div class="panel">
+    <p>
+      Thank you for visiting my portfolio.
+      I am open to learning opportunities, collaboration
+      and professional connections.
+    </p>
+    <p style="margin-top:15px">
+      Email: YOUR_EMAIL@example.com
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 My Portfolio | Designed with passion.</p>
+</footer>
+
+</body>
+  </html>
+  
