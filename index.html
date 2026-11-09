@@ -2,356 +2,880 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Portfolio | Creative CSE Student</title>
+  <meta charset="UTF-8">
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
+  <!-- Website mobile-friendly করার জন্য -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #090b12;
-  color: #f5f5f5;
-  line-height: 1.7;
-}
+  <!-- Browser tab-এ যে title দেখাবে -->
+  <title>Israt Jahan Mim | Personal Portfolio</title>
 
-:root {
-  --gold: #d6b36a;
-  --muted: #a7a7b2;
-  --panel: #131722;
-}
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 8%;
-  background: #0d1019;
-  border-bottom: 1px solid #282a33;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
+  <style>
+    /* =========================
+       1. WEBSITE-এর মূল DESIGN
+    ========================== */
 
-.logo {
-  color: var(--gold);
-  font-size: 23px;
-  font-weight: bold;
-}
+    :root {
+      --bg: #090909;
+      --card: #141414;
+      --text: #f5f1e8;
+      --muted: #aaa49a;
+      --gold: #d6ad60;
+      --gold-light: #f0d49b;
+      --border: rgba(214,173,96,0.22);
+      --shadow: 0 15px 45px rgba(0,0,0,0.25);
+    }
 
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
+    /* Light mode-এর রং */
+    body.light {
+      --bg: #f7f4ed;
+      --card: #ffffff;
+      --text: #211d17;
+      --muted: #6d675e;
+      --gold: #9a6b20;
+      --gold-light: #b9893e;
+      --border: rgba(154,107,32,0.25);
+      --shadow: 0 15px 45px rgba(40,30,10,0.09);
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 13px;
-}
+    /* সব element-এর sizing ঠিক রাখা */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-nav a:hover {
-  color: var(--gold);
-}
+    /* পুরো website-এর body */
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+      transition: background 0.35s, color 0.35s;
+      overflow-x: hidden;
+    }
 
-section {
-  padding: 75px 9%;
-}
+    /* সব link-এর underline সরানো */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.hero {
-  min-height: 88vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 45px;
-}
+    /* সব section-এর common width */
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
 
-.hero-content {
-  max-width: 600px;
-}
+    /* Section-এর ওপর-নিচে space */
+    section {
+      padding: 100px 0;
+      scroll-margin-top: 80px;
+    }
 
-.tag {
-  color: var(--gold);
-  letter-spacing: 3px;
-  font-size: 13px;
-}
+    /* Section heading */
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
 
-h1 {
-  font-size: clamp(35px, 6vw, 60px);
-  line-height: 1.2;
-  margin: 18px 0;
-}
+    .section-title h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 10px;
+    }
 
-h1 span, h2 span {
-  color: var(--gold);
-}
+    /* Gold color text */
+    .gold {
+      color: var(--gold);
+    }
 
-.hero p, .description {
-  color: var(--muted);
-}
+    /* Section heading-এর নিচের ছোট লাইন */
+    .line {
+      width: 65px;
+      height: 3px;
+      background: var(--gold);
+      margin: 15px auto;
+      border-radius: 10px;
+    }
 
-.btn {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 12px 25px;
-  background: var(--gold);
-  color: #101010;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
+    /* =========================
+       2. NAVIGATION BAR
+    ========================== */
 
-.profile {
-  width: 270px;
-  height: 320px;
-  object-fit: cover;
-  border: 3px solid var(--gold);
-  border-radius: 16px;
-  background: var(--panel);
-}
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(9,9,9,0.88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
 
-.section-title {
-  font-size: 32px;
-  margin-bottom: 25px;
-}
+    body.light header {
+      background: rgba(247,244,237,0.9);
+    }
 
-.panel {
-  background: var(--panel);
-  padding: 25px;
-  border: 1px solid #292d3a;
-  border-radius: 12px;
-}
+    .navbar {
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-}
+    .logo {
+      font-family: "Playfair Display", serif;
+      color: var(--gold);
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
 
-.card {
-  background: var(--panel);
-  padding: 23px;
-  border: 1px solid #292d3a;
-  border-radius: 12px;
-  transition: 0.3s;
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+    }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: var(--gold);
-}
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: 0.3s;
+    }
 
-.card h3 {
-  color: var(--gold);
-  margin-bottom: 10px;
-}
+    .nav-links a:hover {
+      color: var(--gold);
+    }
 
-.card p, .panel p {
-  color: var(--muted);
-}
+    /* Theme ও mobile menu button */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-ul {
-  padding-left: 20px;
-  color: var(--muted);
-}
+    .icon-btn {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--gold);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
 
-li {
-  margin: 8px 0;
-}
+    #menuBtn {
+      display: none;
+    }
 
-footer {
-  text-align: center;
-  padding: 25px;
-  color: var(--muted);
-  border-top: 1px solid #292d3a;
-}
+    /* =========================
+       3. HOME / HERO SECTION
+    ========================== */
 
-@media(max-width: 700px) {
-  header {
-    flex-direction: column;
-    gap: 12px;
-  }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      background:
+        radial-gradient(circle at 80% 35%, rgba(214,173,96,0.12), transparent 30%);
+    }
 
-  nav {
-    justify-content: center;
-  }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 50px;
+    }
 
-  .hero {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding-top: 55px;
-  }
+    .welcome {
+      color: var(--gold);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
 
-  .profile {
-    width: 210px;
-    height: 245px;
-  }
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.15;
+      margin: 18px 0;
+    }
 
-  section {
-    padding: 55px 7%;
-  }
-}
-</style>
+    .hero h3 {
+      color: var(--muted);
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      min-height: 40px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 550px;
+      margin: 20px 0 30px;
+    }
+
+    /* Button design */
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: var(--gold);
+      color: #15110a;
+      border: 1px solid var(--gold);
+      border-radius: 30px;
+      font-weight: 700;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      background: transparent;
+      color: var(--gold);
+      box-shadow: 0 8px 25px rgba(214,173,96,0.18);
+    }
+
+    .outline-btn {
+      background: transparent;
+      color: var(--gold);
+      margin-left: 10px;
+    }
+
+    /* Profile picture */
+    .profile-wrap {
+      width: 290px;
+      height: 290px;
+      margin: auto;
+      padding: 9px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(214,173,96,0.18);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .profile {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--bg);
+    }
+
+    /* Profile picture-এর animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* =========================
+       4. ABOUT SECTION
+    ========================== */
+
+    .about-box {
+      max-width: 850px;
+      margin: auto;
+      padding: 35px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    /* =========================
+       5. EDUCATION SECTION
+    ========================== */
+
+    .education-card {
+      max-width: 750px;
+      margin: auto;
+      padding: 30px;
+      background: var(--card);
+      border-left: 4px solid var(--gold);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+    }
+
+    .education-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .education-card h3 {
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .education-card p {
+      color: var(--muted);
+      margin: 5px 0;
+    }
+
+    /* =========================
+       6. SKILLS SECTION
+    ========================== */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      padding: 28px 18px;
+      text-align: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      transition: 0.35s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 30px rgba(214,173,96,0.12);
+    }
+
+    .skill-card .emoji {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .skill-card h3 {
+      color: var(--gold);
+      font-size: 1.05rem;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+
+    /* =========================
+       7. GOALS SECTION
+    ========================== */
+
+    .goals-box {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      padding: 35px;
+      background: linear-gradient(135deg, var(--card), rgba(214,173,96,0.08));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .goals-box p {
+      color: var(--muted);
+    }
+
+    /* =========================
+       8. PROJECTS SECTION
+    ========================== */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
+      transition: 0.35s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+    }
+
+    .project-card h3 {
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 12px;
+      margin: 4px;
+      border-radius: 20px;
+      background: rgba(214,173,96,0.12);
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
+
+    /* =========================
+       9. CONTACT SECTION
+    ========================== */
+
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      padding: 35px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin: 12px 0 20px;
+    }
+
+    .contact-link {
+      display: block;
+      color: var(--gold);
+      margin: 12px 0;
+      overflow-wrap: anywhere;
+    }
+
+    /* =========================
+       10. FOOTER
+    ========================== */
+
+    footer {
+      padding: 25px 10px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* =========================
+       11. SCROLL ANIMATION
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Back-to-top button */
+    #topBtn {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 45px;
+      height: 45px;
+      border: none;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #15110a;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: none;
+      z-index: 900;
+    }
+
+    /* =========================
+       12. MOBILE RESPONSIVE DESIGN
+    ========================== */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        gap: 12px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero {
+        padding-top: 140px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      #menuBtn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        display: none;
+        flex-direction: column;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .profile-wrap {
+        width: 230px;
+        height: 230px;
+      }
+
+      .about-box,
+      .contact-box,
+      .goals-box {
+        padding: 25px 18px;
+      }
+
+      .outline-btn {
+        margin: 12px 0 0;
+      }
+    }
+
+    /* Animation কম পছন্দ করলে motion কমানো */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">MY PORTFOLIO.</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#goals">Goals</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <!-- =========================
+       NAVIGATION BAR
+  ========================== -->
 
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div class="tag">WELCOME TO MY DIGITAL SPACE</div>
-    <h1>Hello, I'm <span>ISRAT JAHAN MIM</span></h1>
-    <h3>Diploma CSE Student | Future Web Developer</h3>
-    <p>
-      I am a curious learner passionate about technology,
-      creative problem-solving and building useful digital experiences.
-      I believe every small step brings me closer to my goals.
-    </p>
-    <a href="#about" class="btn">Explore My Portfolio</a>
-  </div>
+  <header>
+    <div class="container navbar">
 
-  <img src="file_00000000b5f46208ba4fa25cc09adf68.png" alt="My Profile Picture" class="profile">
-</section>
+      <!-- Website logo -->
+      <a href="#home" class="logo">Mim.</a>
 
-<section id="about">
-  <h2 class="section-title">About <span>Me</span></h2>
-  <div class="panel">
-    <p>
-      I am a Diploma student in Computer Science and Technology.
-      I enjoy exploring how technology works and turning ideas
-      into practical projects. I am currently developing my
-      knowledge in web development, databases and modern technology.
-      My goal is to become more skilled, confident and independent
-      through continuous learning and practical experience.
-    </p>
-  </div>
-</section>
-
-<section id="education">
-  <h2 class="section-title">My <span>Education</span></h2>
-  <div class="card">
-    <h3>Diploma in Computer Science & Technology</h3>
-    <p>Brahmanbaria Polytechnic Institute</p>
-    <p>Currently studying in 6th Semester</p>
-  </div>
-</section>
-
-<section id="skills">
-  <h2 class="section-title">My <span>Skills & Interests</span></h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Technical Interests</h3>
-      <ul>
-        <li>HTML & CSS</li>
-        <li>Web Design</li>
-        <li>Database Management</li>
-        <li>Programming Fundamentals</li>
-        <li>Computer Networking</li>
+      <!-- Navigation links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#goals">Goals</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-    </div>
 
-    <div class="card">
-      <h3>Creative Skills</h3>
-      <ul>
-        <li>Creative Thinking</li>
-        <li>Problem Solving</li>
-        <li>Organizing Information</li>
-        <li>Learning Through Projects</li>
-        <li>Attention to Detail</li>
-      </ul>
-    </div>
+      <!-- Theme ও mobile menu button -->
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☀</button>
+        <button class="icon-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
 
-    <div class="card">
-      <h3>Professional Development</h3>
-      <ul>
-        <li>Communication Skills</li>
-        <li>English Speaking Practice</li>
-        <li>Team Collaboration</li>
-        <li>Time Management</li>
-        <li>Continuous Learning</li>
-      </ul>
     </div>
-  </div>
-  <p class="description" style="margin-top:18px">
-    These are my current skills and learning interests.
-    I am continuously working to improve them through practice.
-  </p>
-</section>
+  </header>
 
-<section id="goals">
-  <h2 class="section-title">My <span>Goals</span></h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Short-Term Goal</h3>
-      <p>Improve my technical knowledge and build practical projects.</p>
+  <!-- =========================
+       HOME SECTION
+  ========================== -->
+
+  <section class="hero" id="home">
+    <div class="container hero-content">
+
+      <div class="reveal">
+
+        <div class="welcome">Welcome to my portfolio</div>
+
+        <h1>
+          Hello, I'm<br>
+          <span class="gold">Israt Jahan Mim</span>
+        </h1>
+
+        <!-- JavaScript এখানে typing effect দেখাবে -->
+        <h3>I'm a <span class="gold" id="typing"></span></h3>
+
+        <p>
+          A Diploma CSE student who loves learning about technology,
+          exploring new ideas, and building creative digital experiences.
+        </p>
+
+        <a href="#about" class="btn">Discover More</a>
+        <a href="#contact" class="btn outline-btn">Contact Me</a>
+
+      </div>
+
+      <!-- Profile picture -->
+      <div class="profile-wrap reveal">
+        <img
+          src="file_00000000b5f46208ba4fa25cc09adf68.png"
+          alt="Israt Jahan Mim Profile Picture"
+          class="profile"
+        >
+      </div>
+
     </div>
-    <div class="card">
-      <h3>Career Goal</h3>
-      <p>Develop a career in technology and gain real-world experience.</p>
+  </section>
+
+  <!-- =========================
+       ABOUT SECTION
+  ========================== -->
+
+  <section id="about">
+    <div class="container">
+
+      <div class="section-title reveal">
+        <h2>About <span class="gold">Me</span></h2>
+        <div class="line"></div>
+        <p>Get to know me better</p>
+      </div>
+
+      <div class="about-box reveal">
+        <p>
+          Hello! I'm Israt Jahan Mim. I am currently studying Diploma
+          in Computer Science and Technology.
+        </p>
+
+        <p>
+          I enjoy learning new technologies, improving my computer skills,
+          and discovering how websites and software work.
+        </p>
+
+        <p>
+          I believe that consistency, curiosity, and continuous learning
+          can help me achieve my dreams.
+        </p>
+      </div>
+
     </div>
-    <div class="card">
-      <h3>Personal Goal</h3>
-      <p>Become confident, independent and a lifelong learner.</p>
+  </section>
+
+  <!-- =========================
+       EDUCATION SECTION
+  ========================== -->
+
+  <section id="education">
+    <div class="container">
+
+      <div class="section-title reveal">
+        <h2>My <span class="gold">Education</span></h2>
+        <div class="line"></div>
+        <p>My academic journey</p>
+      </div>
+
+      <div class="education-card reveal">
+        <h3>Diploma in Computer Science & Technology</h3>
+        <p><strong>Institute:</strong> Brahmanbaria Polytechnic Institute</p>
+        <p><strong>Department:</strong> Computer Science & Technology</p>
+        <p><strong>Current Semester:</strong> 6th Semester</p>
+        <p><strong>Status:</strong> Currently Studying</p>
+      </div>
+
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="projects">
-  <h2 class="section-title">My <span>Projects</span></h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Personal Portfolio Website</h3>
-      <p>A responsive website created to introduce myself,
-      showcase my learning journey and present my projects.</p>
-      <p><br>Technology: HTML, CSS</p>
+  <!-- =========================
+       SKILLS SECTION
+  ========================== -->
+
+  <section id="skills">
+    <div class="container">
+
+      <div class="section-title reveal">
+        <h2>My <span class="gold">Skills</span></h2>
+        <div class="line"></div>
+        <p>Things I have learned and am developing</p>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card reveal">
+          <div class="emoji">💻</div>
+          <h3>HTML & CSS</h3>
+          <p>Learning to create and design websites.</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="emoji">✨</div>
+          <h3>JavaScript</h3>
+          <p>Learning interactive website development.</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="emoji">🗄️</div>
+          <h3>Database</h3>
+          <p>Learning database concepts and SQL.</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="emoji">📊</div>
+          <h3>MS Office</h3>
+          <p>Microsoft Word, Excel, Access and PowerPoint.</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="emoji">🌐</div>
+          <h3>Computer Networking</h3>
+          <p>Studying networking concepts and technologies.</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="emoji">⌨️</div>
+          <h3>Typing</h3>
+          <p>Bangla and English typing.</p>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h3>Database Management Project</h3>
-      <p>A learning project focused on organizing information
-      and understanding database operations.</p>
-      <p><br>Technology: MySQL, Database Concepts</p>
+  <!-- =========================
+       GOALS SECTION
+  ========================== -->
+
+  <section id="goals">
+    <div class="container">
+
+      <div class="section-title reveal">
+        <h2>My <span class="gold">Goals</span></h2>
+        <div class="line"></div>
+        <p>Dream big, learn every day</p>
+      </div>
+
+      <div class="goals-box reveal">
+        <h3 class="gold">Building My Future in Technology</h3>
+
+        <p>
+          My goal is to become a skilled technology professional,
+          improve my practical knowledge, and create useful digital projects.
+          I want to keep learning, gain experience, and build a meaningful career.
+        </p>
+      </div>
+
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <h2 class="section-title">Contact <span>Me</span></h2>
-  <div class="panel">
-    <p>
-      Thank you for visiting my portfolio.
-      I am open to learning opportunities, collaboration
-      and professional connections.
-    </p>
-    <p style="margin-top:15px">
-      Contact: Available for professional connections.
-    </p>
-  </div>
-</section>
+  <!-- =========================
+       PROJECTS SECTION
+  ========================== -->
 
-<footer>
-  <p>© 2026 My Portfolio | Designed with passion.</p>
-</footer>
+  <section id="projects">
+    <div class="container">
 
-</body>
-  </html>
-  
+      <div class="section-title reveal">
+        <h2>My <span class="gold">Projects</span></h2>
+        <div class="line"></div>
+        <p>My learning journey through projects</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <h3>Personal Portfolio Website</h3>
+          <p>
+            A personal website created to introduce myself,
+            showcase my education, skills, goals, and projects.
+          </p>
+
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+
+        <div class="project-card reveal">
+          <h3>Database Learning Project</h3>
+          <p>
+            Exploring database management concepts and practicing
+            how to organize and manage information using SQL.
+          </p>
+
+          <span class="tag">Database</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Learning</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       CONTACT SECTION
+  ========================== -->
+
+  <section id="contact">
+    <div class="container">
+
+      <div class="section-title reveal">
+        <h2>Contact <span class="gold">Me</span></h2>
+        <div class="line"></div>
+        <p>Let's connect and share ideas</p>
+      </div>
+
+      <div class="contact-box reveal">
+
+        <h3>Have a project or opportunity in mind?</h3>
+
+        <p>
+          Feel free to reach out through email or visit my GitHub profile.
+        </p>
+
+        <!-- নিজের email বসানোর জায়গা -->
+        <a class="contact-link" href="mailto:YOUR_EMAIL@gmail.com">
+          ✉ YOUR_EMAIL@gmail.com
+        </a>
+
+        <!-- GitHub profile link -->
+        <a
+          class="contact-link"
+          href="https://github.com/ramim2008tul-cpu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💻 Visit My GitHub Profile
+        </a>
+
+        <a class="btn" href="mailto:YOUR_EMAIL@gmail.com">
+          Send Me an Email
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       FOOTER
+ 
