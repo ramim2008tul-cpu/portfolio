@@ -3,47 +3,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <!-- Website mobile-friendly করার জন্য -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Browser tab-এ যে title দেখাবে -->
-  <title>Israt Jahan Mim | Personal Portfolio</title>
+  <title>Israt Jahan Mim | Portfolio</title>
+  <meta name="description" content="Personal portfolio of Israt Jahan Mim, Diploma CSE student.">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================
-       1. WEBSITE-এর মূল DESIGN
-    ========================== */
+    /* ===== 1. WEBSITE COLORS ===== */
 
     :root {
       --bg: #090909;
-      --card: #141414;
+      --card: #151515;
       --text: #f5f1e8;
       --muted: #aaa49a;
       --gold: #d6ad60;
-      --gold-light: #f0d49b;
-      --border: rgba(214,173,96,0.22);
-      --shadow: 0 15px 45px rgba(0,0,0,0.25);
+      --border: rgba(214,173,96,0.25);
+      --header: rgba(9,9,9,0.92);
     }
 
-    /* Light mode-এর রং */
+    /* Light theme colors */
     body.light {
       --bg: #f7f4ed;
       --card: #ffffff;
       --text: #211d17;
       --muted: #6d675e;
-      --gold: #9a6b20;
-      --gold-light: #b9893e;
-      --border: rgba(154,107,32,0.25);
-      --shadow: 0 15px 45px rgba(40,30,10,0.09);
+      --gold: #95671f;
+      --border: rgba(149,103,31,0.25);
+      --header: rgba(247,244,237,0.95);
     }
 
-    /* সব element-এর sizing ঠিক রাখা */
+    /* ===== 2. BASIC SETTINGS ===== */
+
     * {
       margin: 0;
       padding: 0;
@@ -51,35 +45,38 @@
       scroll-behavior: smooth;
     }
 
-    /* পুরো website-এর body */
     body {
       background: var(--bg);
       color: var(--text);
       font-family: "DM Sans", sans-serif;
       line-height: 1.7;
-      transition: background 0.35s, color 0.35s;
       overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
     }
 
-    /* সব link-এর underline সরানো */
     a {
       text-decoration: none;
       color: inherit;
     }
 
-    /* সব section-এর common width */
+    button {
+      font-family: inherit;
+    }
+
     .container {
       width: min(1100px, 90%);
       margin: auto;
     }
 
-    /* Section-এর ওপর-নিচে space */
     section {
-      padding: 100px 0;
-      scroll-margin-top: 80px;
+      padding: 90px 0;
+      scroll-margin-top: 75px;
     }
 
-    /* Section heading */
+    .gold {
+      color: var(--gold);
+    }
+
     .section-title {
       text-align: center;
       margin-bottom: 45px;
@@ -88,26 +85,21 @@
     .section-title h2 {
       font-family: "Playfair Display", serif;
       font-size: clamp(2rem, 5vw, 3rem);
-      margin-bottom: 10px;
     }
 
-    /* Gold color text */
-    .gold {
-      color: var(--gold);
+    .section-title p {
+      color: var(--muted);
     }
 
-    /* Section heading-এর নিচের ছোট লাইন */
     .line {
       width: 65px;
       height: 3px;
       background: var(--gold);
-      margin: 15px auto;
+      margin: 14px auto;
       border-radius: 10px;
     }
 
-    /* =========================
-       2. NAVIGATION BAR
-    ========================== */
+    /* ===== 3. NAVIGATION BAR ===== */
 
     header {
       position: fixed;
@@ -115,13 +107,9 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(9,9,9,0.88);
+      background: var(--header);
       backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--border);
-    }
-
-    body.light header {
-      background: rgba(247,244,237,0.9);
     }
 
     .navbar {
@@ -133,21 +121,21 @@
 
     .logo {
       font-family: "Playfair Display", serif;
+      font-size: 1.7rem;
       color: var(--gold);
-      font-size: 1.5rem;
       font-weight: 800;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 25px;
+      gap: 22px;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 0.9rem;
       color: var(--muted);
+      font-size: 0.9rem;
       transition: 0.3s;
     }
 
@@ -155,31 +143,27 @@
       color: var(--gold);
     }
 
-    /* Theme ও mobile menu button */
     .nav-actions {
       display: flex;
-      align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .icon-btn {
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--gold);
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      cursor: pointer;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--gold);
       font-size: 1.1rem;
+      cursor: pointer;
     }
 
     #menuBtn {
       display: none;
     }
 
-    /* =========================
-       3. HOME / HERO SECTION
-    ========================== */
+    /* ===== 4. HOME SECTION ===== */
 
     .hero {
       min-height: 100vh;
@@ -187,61 +171,60 @@
       align-items: center;
       padding-top: 120px;
       background:
-        radial-gradient(circle at 80% 35%, rgba(214,173,96,0.12), transparent 30%);
+        radial-gradient(circle at 80% 35%, rgba(214,173,96,0.12), transparent 32%);
     }
 
     .hero-content {
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
       align-items: center;
-      gap: 50px;
+      gap: 45px;
     }
 
     .welcome {
       color: var(--gold);
       letter-spacing: 4px;
-      text-transform: uppercase;
       font-size: 0.8rem;
+      text-transform: uppercase;
       font-weight: 700;
     }
 
     .hero h1 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      line-height: 1.15;
+      font-size: clamp(2.5rem, 6vw, 4.7rem);
+      line-height: 1.2;
       margin: 18px 0;
     }
 
     .hero h3 {
       color: var(--muted);
       font-size: clamp(1.1rem, 3vw, 1.6rem);
-      min-height: 40px;
+      min-height: 42px;
     }
 
     .hero p {
-      color: var(--muted);
       max-width: 550px;
-      margin: 20px 0 30px;
+      color: var(--muted);
+      margin: 20px 0 28px;
     }
 
-    /* Button design */
+    /* Common button design */
     .btn {
       display: inline-block;
       padding: 12px 25px;
-      background: var(--gold);
-      color: #15110a;
-      border: 1px solid var(--gold);
       border-radius: 30px;
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      color: #15110a;
       font-weight: 700;
       transition: 0.3s;
       cursor: pointer;
     }
 
     .btn:hover {
-      transform: translateY(-4px);
       background: transparent;
       color: var(--gold);
-      box-shadow: 0 8px 25px rgba(214,173,96,0.18);
+      transform: translateY(-4px);
     }
 
     .outline-btn {
@@ -250,7 +233,7 @@
       margin-left: 10px;
     }
 
-    /* Profile picture */
+    /* Profile picture frame */
     .profile-wrap {
       width: 290px;
       height: 290px;
@@ -258,47 +241,42 @@
       padding: 9px;
       border: 2px solid var(--gold);
       border-radius: 50%;
-      box-shadow: 0 0 40px rgba(214,173,96,0.18);
+      box-shadow: 0 0 40px rgba(214,173,96,0.2);
       animation: float 4s ease-in-out infinite;
     }
 
     .profile {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
       object-fit: cover;
+      border-radius: 50%;
       border: 4px solid var(--bg);
     }
 
-    /* Profile picture-এর animation */
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+      50% { transform: translateY(-13px); }
     }
 
-    /* =========================
-       4. ABOUT SECTION
-    ========================== */
+    /* ===== 5. ABOUT SECTION ===== */
 
     .about-box {
       max-width: 850px;
       margin: auto;
       padding: 35px;
+      text-align: center;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 20px;
-      box-shadow: var(--shadow);
-      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
 
     .about-box p {
       color: var(--muted);
-      margin-bottom: 15px;
+      margin: 12px 0;
     }
 
-    /* =========================
-       5. EDUCATION SECTION
-    ========================== */
+    /* ===== 6. EDUCATION SECTION ===== */
 
     .education-card {
       max-width: 750px;
@@ -307,7 +285,6 @@
       background: var(--card);
       border-left: 4px solid var(--gold);
       border-radius: 12px;
-      box-shadow: var(--shadow);
       transition: 0.3s;
     }
 
@@ -317,17 +294,15 @@
 
     .education-card h3 {
       color: var(--gold);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .education-card p {
       color: var(--muted);
-      margin: 5px 0;
+      margin: 6px 0;
     }
 
-    /* =========================
-       6. SKILLS SECTION
-    ========================== */
+    /* ===== 7. SKILLS SECTION ===== */
 
     .skills-grid {
       display: grid;
@@ -341,7 +316,7 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 15px;
-      transition: 0.35s;
+      transition: 0.3s;
     }
 
     .skill-card:hover {
@@ -350,43 +325,39 @@
       box-shadow: 0 12px 30px rgba(214,173,96,0.12);
     }
 
-    .skill-card .emoji {
+    .emoji {
       font-size: 2rem;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .skill-card h3 {
       color: var(--gold);
-      font-size: 1.05rem;
     }
 
     .skill-card p {
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       margin-top: 8px;
     }
 
-    /* =========================
-       7. GOALS SECTION
-    ========================== */
+    /* ===== 8. GOALS SECTION ===== */
 
     .goals-box {
       max-width: 800px;
       margin: auto;
-      text-align: center;
       padding: 35px;
-      background: linear-gradient(135deg, var(--card), rgba(214,173,96,0.08));
+      text-align: center;
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 20px;
     }
 
     .goals-box p {
       color: var(--muted);
+      margin-top: 15px;
     }
 
-    /* =========================
-       8. PROJECTS SECTION
-    ========================== */
+    /* ===== 9. PROJECTS SECTION ===== */
 
     .projects-grid {
       display: grid;
@@ -395,11 +366,11 @@
     }
 
     .project-card {
+      padding: 30px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 30px;
-      transition: 0.35s;
+      transition: 0.3s;
     }
 
     .project-card:hover {
@@ -427,18 +398,16 @@
       font-size: 0.8rem;
     }
 
-    /* =========================
-       9. CONTACT SECTION
-    ========================== */
+    /* ===== 10. CONTACT SECTION ===== */
 
     .contact-box {
       max-width: 700px;
       margin: auto;
       padding: 35px;
+      text-align: center;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 20px;
-      text-align: center;
     }
 
     .contact-box p {
@@ -449,13 +418,11 @@
     .contact-link {
       display: block;
       color: var(--gold);
-      margin: 12px 0;
+      margin: 15px 0;
       overflow-wrap: anywhere;
     }
 
-    /* =========================
-       10. FOOTER
-    ========================== */
+    /* ===== 11. FOOTER ===== */
 
     footer {
       padding: 25px 10px;
@@ -465,26 +432,31 @@
       font-size: 0.9rem;
     }
 
-    /* =========================
-       11. SCROLL ANIMATION
-    ========================== */
+    /* ===== 12. SCROLL ANIMATION ===== */
 
+    /* গুরুত্বপূর্ণ: opacity সবসময় 1, তাই JS বন্ধ হলেও লেখা দেখা যাবে */
     .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.show {
       opacity: 1;
       transform: translateY(0);
+      animation: appear 0.8s ease both;
     }
 
-    /* Back-to-top button */
+    @keyframes appear {
+      from {
+        opacity: 0.3;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Back to top button */
     #topBtn {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
+      right: 20px;
+      bottom: 20px;
       width: 45px;
       height: 45px;
       border: none;
@@ -497,15 +469,9 @@
       z-index: 900;
     }
 
-    /* =========================
-       12. MOBILE RESPONSIVE DESIGN
-    ========================== */
+    /* ===== 13. MOBILE DESIGN ===== */
 
     @media (max-width: 850px) {
-      .nav-links {
-        gap: 12px;
-      }
-
       .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -517,7 +483,11 @@
       }
 
       .hero {
-        padding-top: 140px;
+        padding-top: 130px;
+      }
+
+      .nav-links {
+        gap: 12px;
       }
     }
 
@@ -527,6 +497,7 @@
       }
 
       .nav-links {
+        display: none;
         position: absolute;
         top: 75px;
         left: 0;
@@ -534,8 +505,8 @@
         padding: 20px;
         background: var(--card);
         border-bottom: 1px solid var(--border);
-        display: none;
         flex-direction: column;
+        gap: 18px;
       }
 
       .nav-links.active {
@@ -567,12 +538,12 @@
       }
     }
 
-    /* Animation কম পছন্দ করলে motion কমানো */
+    /* Motion কমানোর setting */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        scroll-behavior: auto !important;
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
@@ -580,17 +551,13 @@
 
 <body>
 
-  <!-- =========================
-       NAVIGATION BAR
-  ========================== -->
+  <!-- ===== NAVIGATION BAR ===== -->
 
   <header>
     <div class="container navbar">
 
-      <!-- Website logo -->
       <a href="#home" class="logo">Mim.</a>
 
-      <!-- Navigation links -->
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -601,18 +568,15 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <!-- Theme ও mobile menu button -->
       <div class="nav-actions">
-        <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☀</button>
+        <button class="icon-btn" id="themeBtn" aria-label="Change theme">☀</button>
         <button class="icon-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
       </div>
 
     </div>
   </header>
 
-  <!-- =========================
-       HOME SECTION
-  ========================== -->
+  <!-- ===== HOME SECTION ===== -->
 
   <section class="hero" id="home">
     <div class="container hero-content">
@@ -626,8 +590,7 @@
           <span class="gold">Israt Jahan Mim</span>
         </h1>
 
-        <!-- JavaScript এখানে typing effect দেখাবে -->
-        <h3>I'm a <span class="gold" id="typing"></span></h3>
+        <h3>I'm a <span class="gold" id="typing">Diploma CSE Student</span></h3>
 
         <p>
           A Diploma CSE student who loves learning about technology,
@@ -639,11 +602,10 @@
 
       </div>
 
-      <!-- Profile picture -->
       <div class="profile-wrap reveal">
         <img
           src="file_00000000b5f46208ba4fa25cc09adf68.png"
-          alt="Israt Jahan Mim Profile Picture"
+          alt="Israt Jahan Mim"
           class="profile"
         >
       </div>
@@ -651,9 +613,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       ABOUT SECTION
-  ========================== -->
+  <!-- ===== ABOUT SECTION ===== -->
 
   <section id="about">
     <div class="container">
@@ -666,8 +626,8 @@
 
       <div class="about-box reveal">
         <p>
-          Hello! I'm Israt Jahan Mim. I am currently studying Diploma
-          in Computer Science and Technology.
+          Hello! I'm Israt Jahan Mim. I am currently studying
+          Diploma in Computer Science and Technology.
         </p>
 
         <p>
@@ -684,9 +644,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       EDUCATION SECTION
-  ========================== -->
+  <!-- ===== EDUCATION SECTION ===== -->
 
   <section id="education">
     <div class="container">
@@ -708,9 +666,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       SKILLS SECTION
-  ========================== -->
+  <!-- ===== SKILLS SECTION ===== -->
 
   <section id="skills">
     <div class="container">
@@ -763,9 +719,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       GOALS SECTION
-  ========================== -->
+  <!-- ===== GOALS SECTION ===== -->
 
   <section id="goals">
     <div class="container">
@@ -789,9 +743,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       PROJECTS SECTION
-  ========================== -->
+  <!-- ===== PROJECTS SECTION ===== -->
 
   <section id="projects">
     <div class="container">
@@ -832,9 +784,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       CONTACT SECTION
-  ========================== -->
+  <!-- ===== CONTACT SECTION ===== -->
 
   <section id="contact">
     <div class="container">
@@ -853,12 +803,11 @@
           Feel free to reach out through email or visit my GitHub profile.
         </p>
 
-        <!-- নিজের email বসানোর জায়গা -->
+        <!-- নিজের email দুই জায়গায় বসাবি -->
         <a class="contact-link" href="mailto:YOUR_EMAIL@gmail.com">
           ✉ YOUR_EMAIL@gmail.com
         </a>
 
-        <!-- GitHub profile link -->
         <a
           class="contact-link"
           href="https://github.com/ramim2008tul-cpu"
@@ -876,6 +825,67 @@
     </div>
   </section>
 
-  <!-- =========================
-       FOOTER
- 
+  <!-- ===== FOOTER ===== -->
+
+  <footer>
+    <p>
+      © <span id="year"></span> Israt Jahan Mim. All Rights Reserved.
+    </p>
+    <p>Designed with creativity and passion ✨</p>
+  </footer>
+
+  <!-- Back to top button -->
+  <button id="topBtn" aria-label="Back to top">↑</button>
+
+  <!-- ===== JAVASCRIPT ===== -->
+
+  <script>
+    // Mobile menu open and close
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function () {
+      navLinks.classList.toggle("active");
+
+      const isOpen = navLinks.classList.contains("active");
+
+      menuBtn.setAttribute("aria-expanded", isOpen);
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    // Menu link click করলে menu বন্ধ হবে
+    document.querySelectorAll(".nav-links a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+        menuBtn.textContent = "☰";
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Dark and light theme
+    const themeBtn = document.getElementById("themeBtn");
+
+    themeBtn.addEventListener("click", function () {
+      document.body.classList.toggle("light");
+
+      if (document.body.classList.contains("light")) {
+        themeBtn.textContent = "☾";
+      } else {
+        themeBtn.textContent = "☀";
+      }
+    });
+
+    // Typing animation
+    const typingElement = document.getElementById("typing");
+
+    const words = [
+      "Diploma CSE Student",
+      "Aspiring Web Developer",
+      "Technology Learner"
+    ];
+
+    let wordIndex = 0;
+    let letterIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
